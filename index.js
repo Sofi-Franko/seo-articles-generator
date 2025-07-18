@@ -1,4 +1,3 @@
-
 import {google} from 'googleapis';
 import OpenAI from 'openai';
 import MarkdownIt from 'markdown-it';
@@ -26,7 +25,7 @@ import { searchLinks } from './helpers/search-links-api.js';
 import {
   API_KEYS,
   USER_EMAILS,
-  DOMAINS,
+  TOPICS_FIELD,
   SheetInfo
 } from './constants.js';
 
@@ -83,14 +82,14 @@ const md = new MarkdownIt("commonmark", {linkify: true})
 
                 const promptData = {
                     topic, 
-                    field: SheetInfo.SUB_SHEET_ID, 
+                    field: TOPICS_FIELD, 
                     links
                 }
                 text = await generateText(openai, promptData);
                 console.log(`\n`)
 
                 docId = await createGoogleDoc(auth, docs, topic.trim());
-                console.log(`docId -> ${docId} \n`)
+                console.log(`\n`)
 
                 await insertText(auth, docs, md, docId, text)
                 console.log(`\n`)

@@ -1,8 +1,6 @@
 import {throwCustomError} from "./error-handling.js";
 
 export async function shareDocument(drive, docId, userEmails = []) {
-    console.log("userEmails ---> ", typeof userEmails)
-
     try {
         const permissionRequests = userEmails.map(email => {
             return drive.permissions.create({

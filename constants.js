@@ -8,6 +8,7 @@ export const API_KEYS = {
 }
 
 export const USER_EMAILS = JSON.parse(process.env.USER_EMAILS);
+export const TOPICS_FIELD = process.env.TOPICS_FIELD // name of the topics field (for better context understanding)
 
 // TODO: currently is not supported 
 export const DOMAINS = [
